@@ -8,7 +8,7 @@ tumblr.api('/blog/info', null, function(res) {
     console.log(res);
 });
 
-get the blog posts
+// get the blog posts
 tumblr.api('/blog/posts', [ 'limit=100' ], function(res) {
     alert('callback [/blog/posts]');
     console.log(res);
