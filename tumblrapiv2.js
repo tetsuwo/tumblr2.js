@@ -1,3 +1,12 @@
+/*!
+ * Tumblr API v2 - Wrapper Prototype Class
+ * http://tetsuwo.tumblr.com
+ *
+ * Copyright 2011, Tetsuwo OISHI
+ * Dual license under the MIT license
+ *
+ * Date: 2011-11-07
+ */
 function TumblrAPIv2() {
     this.initialize.apply(this, arguments);
 }
