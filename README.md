@@ -15,7 +15,7 @@
 
 ### get the blog posts
 
-    tumblr.api('/blog/posts', [ 'limit=100' ], function(res) {
+    tumblr.api('/blog/posts', { limit: 100 }, function(res) {
         alert('callback [/blog/posts]');
         console.log(res);
     });
