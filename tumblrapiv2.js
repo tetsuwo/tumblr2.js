@@ -27,20 +27,22 @@ TumblrAPIv2.prototype = {
             if (param.debug) {
                 this.debug = param.debug;
             }
-            if (param.api_key) {
-                this.config.api_key = param.api_key;
+            if (param.apiKey) {
+                this.config.api_key = param.apiKey;
             }
-            if (param.base_hostname) {
-                this.config.base_hostname = param.base_hostname;
+            if (param.baseHostname) {
+                this.config.base_hostname = param.baseHostname;
             }
         }
         this.output(param);
     },
     setApiKey: function(val) {
         this.config.api_key = val;
+        return this;
     },
     setBaseHostname: function(val) {
         this.config.base_hostname = val;
+        return this;
     },
     output: function(val) {
         if (this.debug) {
@@ -52,7 +54,7 @@ TumblrAPIv2.prototype = {
         for(var p in param) {
             var k = prefix ? prefix + '[' + p + ']' : p, v = param[p];
             query.push(typeof v == 'object' ?
-                serialize(v, k) :
+                this.serialize(v, k) :
                 encodeURIComponent(k) + '=' + encodeURIComponent(v));
         }
         return query.join('&');
@@ -60,6 +62,7 @@ TumblrAPIv2.prototype = {
     api: function(method, param, callback) {
         var callbackName = this.name + '_' + this.times;
         this.win[callbackName] = callback;
+
         param = param || {};
         param.api_key = this.config.api_key;
         param.jsonp = callbackName;
@@ -69,7 +72,11 @@ TumblrAPIv2.prototype = {
             callback: callback,
             callbackName: callbackName
         };
+        if (param.limit === 'all') {
+            param.limit = null;
+        }
         this.times++;
+
         (function(that, d, t) {
             var e = d.createElement(t);
             e.type = 'text/javascript';
@@ -85,5 +92,7 @@ TumblrAPIv2.prototype = {
             var s = d.getElementsByTagName(t)[0];
             s.parentNode.insertBefore(e, s);
         })(this, document, 'script');
+
+        return this;
     }
 };
