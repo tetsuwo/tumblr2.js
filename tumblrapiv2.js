@@ -12,24 +12,29 @@ function TumblrAPIv2() {
 }
 TumblrAPIv2.prototype = {
     initialize: function(param) {
-        this.output(param);
         this.api_url = 'http://api.tumblr.com/v2';
         this.times = 0;
         this.requests = [];
         this.data = [];
-        this.debug = true;
+        this.debug = false;
         this.win = document.defaultView || document.parentWindow;
-        this.name = 'tumblr_api_v2';
+        this.name = 'TumblrAPIv2';
         this.config = {
             api_key: null,
             base_hostname: null
         };
-        if (param && param.api_key) {
-            this.config.api_key = param.api_key;
+        if (param) {
+            if (param.debug) {
+                this.debug = param.debug;
+            }
+            if (param.api_key) {
+                this.config.api_key = param.api_key;
+            }
+            if (param.base_hostname) {
+                this.config.base_hostname = param.base_hostname;
+            }
         }
-        if (param && param.base_hostname) {
-            this.config.base_hostname = param.base_hostname;
-        }
+        this.output(param);
     },
     setApiKey: function(val) {
         this.config.api_key = val;
@@ -42,12 +47,22 @@ TumblrAPIv2.prototype = {
             console.log(val);
         }
     },
+    serialize: function(param, prefix) {
+        var query = [];
+        for(var p in param) {
+            var k = prefix ? prefix + '[' + p + ']' : p, v = param[p];
+            query.push(typeof v == 'object' ?
+                serialize(v, k) :
+                encodeURIComponent(k) + '=' + encodeURIComponent(v));
+        }
+        return query.join('&');
+    },
     api: function(method, param, callback) {
         var callbackName = this.name + '_' + this.times;
         this.win[callbackName] = callback;
-        param = param || [];
-        param.push('api_key=' + this.config.api_key);
-        param.push('jsonp=' + callbackName);
+        param = param || {};
+        param.api_key = this.config.api_key;
+        param.jsonp = callbackName;
         this.requests[this.times] = {
             method: method,
             param: param,
@@ -65,7 +80,7 @@ TumblrAPIv2.prototype = {
             } else {
                 e.src += method;
             }
-            e.src += '?' + param.join('&');
+            e.src += '?' + that.serialize(param);
             that.output(e.src);
             var s = d.getElementsByTagName(t)[0];
             s.parentNode.insertBefore(e, s);
