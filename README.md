@@ -1,19 +1,20 @@
-Tumblr2.js - JavaScript SDK for [Tumblr API v2](http://www.tumblr.com/docs/en/api/v2)
-=====================================================================================
+ Tumblr2.js - JavaScript SDK for [Tumblr API v2](http://www.tumblr.com/docs/en/api/v2)
+======================================================================================
+
 
 How to use
 ----------
 
-# Initialize
+### Initialize
 
-## Method type
+#### Method type
 
     var tumblr = new Tumblr2();
     tumblr.setApiKey('fme5U6F8DVblNs7HFYtR0ahOs8o1UjxKjqJUuAlBXJSJUu89oN');
     tumblr.setBaseHostname('tetsuwo.tumblr.com');
 
 
-## The below same means
+#### The below same means
 
     var tumblr = new Tumblr2({ 
         apiKey: 'fme5U6F8DVblNs7HFYtR0ahOs8o1UjxKjqJUuAlBXJSJUu89oN', 
@@ -21,7 +22,7 @@ How to use
     });
 
 
-## Get the blog info
+#### Get the blog info
 
     tumblr.api('/blog/info', null, function(response) {
         alert('callback [/blog/info]');
@@ -29,7 +30,7 @@ How to use
     });
 
 
-## Get the blog posts
+#### Get the blog posts
 
     tumblr.api('/blog/posts', { limit: 100 }, function(response) {
         alert('callback [/blog/posts]');
