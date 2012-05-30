@@ -1,5 +1,5 @@
 /*!
- * Tumblr API v2 - Wrapper Class
+ * Tumblr2 - JavaScript SDK for Tumblr API v2
  *
  * Copyright 2011-2012, Tetsuwo OISHI.
  * Dual license under the MIT license.
