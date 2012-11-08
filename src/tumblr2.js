@@ -5,6 +5,7 @@
  * Dual license under the MIT license.
  * http://tetsuwo.tumblr.com
  *
+ * Version: 0.1.5
  * Date: 2011-11-07
  */
 
@@ -77,8 +78,8 @@ Tumblr2.prototype.api = function(method, param, callback) {
     this.win[callbackName] = callback;
 
     param = param || {};
-    param.apiKey = this.config.apiKey;
-    param.jsonp = callbackName;
+    param.api_key = this.config.apiKey;
+    param.jsonp   = callbackName;
 
     this.requests[this.times] = {
         method: method,

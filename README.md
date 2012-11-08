@@ -1,5 +1,5 @@
- Tumblr2.js - JavaScript SDK for [Tumblr API v2](http://www.tumblr.com/docs/en/api/v2)
-======================================================================================
+Tumblr2.js - JavaScript SDK for [Tumblr API v2](http://www.tumblr.com/docs/en/api/v2)
+=====================================================================================
 
 
 How to use
