@@ -1,7 +1,7 @@
 Tumblr2.js - JavaScript SDK for [Tumblr API v2](http://www.tumblr.com/docs/en/api/v2)
 =====================================================================================
 
-[![Build Status](https://api.travis-ci.org/tetsuwo/jquery-enquete-form-builder.js.png)](https://api.travis-ci.org/tetsuwo/jquery-enquete-form-builder.js.png)
+[![Build Status](https://secure.travis-ci.org/tetsuwo/tumblr2.js.png?branch=master)](https://travis-ci.org/tetsuwo/tumblr2.js)
 
 
 How to use
